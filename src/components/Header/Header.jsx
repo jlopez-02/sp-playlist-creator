@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+const Header = ({menuOpen, setMenuOpen}) => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -32,7 +30,7 @@ const Header = () => {
         X
       </button>
 
-      <nav className={`nav ${menuOpen ? 'open' : ''}`}>
+      <nav className={`nav ${menuOpen ? 'open' : 'close'}`}>
         <ul>
           <li>
             <Link to="/">Inicio</Link>
