@@ -1,0 +1,44 @@
+.date-range {
+  display: flex;
+  flex-direction: column;
+
+  & > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+  }
+}
+
+.date-range label {
+  margin-right: 5px;
+  width: 40px;
+}
+
+.date-range input[type="date"] {
+  margin: 10px 10px;
+  padding: 5px;
+  background-color: var(--dark-input);
+  border: none;
+  color: white;
+  color-scheme: dark;
+  font-weight: 400;
+  cursor: pointer;
+}
+::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+@media (max-width: 450px) {
+
+  .date-range label {
+    display: none;
+  }
+}
+
+@media (max-width: 350px) {
+
+  .date-range input[type="date"] {
+    max-width: 120px;
+  }
+}

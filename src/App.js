@@ -14,8 +14,6 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   
-
-
   useEffect(() => {
     sp.getUserData(setUser);
   }, []);

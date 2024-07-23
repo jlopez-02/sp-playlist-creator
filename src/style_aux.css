@@ -3,6 +3,7 @@
     --secondary-color: #555555;
     --background-color: #fff;
     --text-color: #fff;
-    --link-color: #1db954; /* Color del enlace */
-    --hover-color: #1fdf64; /* Color del enlace al pasar el ratón */
+    --link-color: #1db954;
+    --hover-color: #1fdf64;
+    --dark-input: rgb(174, 174, 174, 0.2);
 }
