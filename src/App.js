@@ -8,6 +8,7 @@ import SpotifyCallback from "./components/SpComponents/SpotifyCallback";
 import { sp } from "./misc/sp_apiCalls";
 import NotFound from "./components/AuxComponents/NotFound";
 import MyPlaylists from "./pages/MyPlaylists";
+import Contact from "./pages/Contact";
 //import { getUserData } from "./misc/sp_apiCalls";
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
             <Route path="/create-playlist" element={<CreatePlaylist />} />
             <Route path="/callback" element={<SpotifyCallback setUser={setUser}/>} />
             <Route path="/my-lists" element={<MyPlaylists user={user}/>} />
-            <Route path="/contact" element={<CreatePlaylist />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

@@ -69,10 +69,10 @@ export class sp {
     const startYear = new Date(startDate).getFullYear();
     const endYear = new Date(endDate).getFullYear();
 
-    try {
-      let allTracks = [];
-      for (let year = startYear; year <= endYear; year++) {
-        const response = await axios.get(`${sp.apiUrl}/artists/${artistId}/albums`, {
+    let allTracks = [];
+    for (let year = startYear; year <= endYear; year++) {
+      try {
+        const response = await sp.retryRequest(() => axios.get(`${sp.apiUrl}/artists/${artistId}/albums`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -82,27 +82,38 @@ export class sp {
             limit: 50,
             year,
           },
-        });
+        }));
 
         const albums = response.data.items;
         for (const album of albums) {
           const albumDate = new Date(album.release_date);
           if (albumDate >= new Date(startDate) && albumDate <= new Date(endDate)) {
-            const albumTracks = await axios.get(`${album.href}/tracks`, {
+            const albumTracks = await sp.retryRequest(() => axios.get(`${album.href}/tracks`, {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            });
+            }));
             allTracks = [...allTracks, ...albumTracks.data.items];
           }
         }
+      } catch (error) {
+        console.error("Error fetching artist tracks", error);
       }
+    }
+    return allTracks;
+  }
 
-      console.log(allTracks);
-      return allTracks;
+  static async retryRequest(requestFn, retries = 5, delay = 1000) {
+    try {
+      return await requestFn();
     } catch (error) {
-      console.error("Error fetching artist tracks", error);
-      return [];
+      if (error.response && error.response.status === 429 && retries > 0) {
+        console.warn(`Rate limit exceeded. Retrying in ${delay / 1000} seconds...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        return sp.retryRequest(requestFn, retries - 1, delay * 2);
+      } else {
+        throw error;
+      }
     }
   }
 
@@ -124,6 +135,7 @@ export class sp {
         }
       );
 
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error("Error creating playlist", error);

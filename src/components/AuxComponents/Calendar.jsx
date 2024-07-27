@@ -1,9 +1,7 @@
 import React from "react";
 import "./Calendar.css";
-const Calendar = ({ artist, handleDateChange }) => {
-  const defaultStartDate = new Date();
-  defaultStartDate.setFullYear(defaultStartDate.getFullYear() - 1);
 
+const Calendar = ({ artist, handleDateChange }) => {
   const formatDate = (date) => {
     const d = new Date(date);
     const month = `${d.getMonth() + 1}`.padStart(2, "0");
@@ -18,11 +16,7 @@ const Calendar = ({ artist, handleDateChange }) => {
         <label>Inicio</label>
         <input
           type="date"
-          value={
-            artist.startDate
-              ? formatDate(artist.startDate)
-              : formatDate(defaultStartDate)
-          }
+          value={artist.startDate ? formatDate(artist.startDate) : ""}
           onChange={(e) =>
             handleDateChange(artist.id, e.target.value, artist.endDate)
           }
@@ -32,9 +26,7 @@ const Calendar = ({ artist, handleDateChange }) => {
         <label>Fin</label>
         <input
           type="date"
-          value={
-            artist.endDate ? formatDate(artist.endDate) : formatDate(new Date())
-          }
+          value={artist.endDate ? formatDate(artist.endDate) : ""}
           onChange={(e) =>
             handleDateChange(artist.id, artist.startDate, e.target.value)
           }
