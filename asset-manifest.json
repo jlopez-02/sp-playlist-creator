@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/sp-playlist-creator/static/css/main.d547f59e.css",
+    "main.js": "/sp-playlist-creator/static/js/main.68e7671c.js",
+    "static/js/453.f627280c.chunk.js": "/sp-playlist-creator/static/js/453.f627280c.chunk.js",
+    "static/media/Spotify_Logo_RGB_White.png": "/sp-playlist-creator/static/media/Spotify_Logo_RGB_White.f48fb565509bf23854a8.png",
+    "static/media/Spotify_Primary_Logo_RGB_White.png": "/sp-playlist-creator/static/media/Spotify_Primary_Logo_RGB_White.bb3a3371dbfb3ce3e2cb.png",
+    "index.html": "/sp-playlist-creator/index.html",
+    "main.d547f59e.css.map": "/sp-playlist-creator/static/css/main.d547f59e.css.map",
+    "main.68e7671c.js.map": "/sp-playlist-creator/static/js/main.68e7671c.js.map",
+    "453.f627280c.chunk.js.map": "/sp-playlist-creator/static/js/453.f627280c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d547f59e.css",
+    "static/js/main.68e7671c.js"
+  ]
+}
