@@ -4,6 +4,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import "./Spotify.css";
 import { sp } from "../../misc/sp_apiCalls";
+import {REDIRECT_URI, RESPONSE_TYPE} from './../../misc/sp_config';
 
 
 const SpotifyCallback = ({setUser}) => {
@@ -14,8 +15,8 @@ const SpotifyCallback = ({setUser}) => {
     const getAccessToken = async (code) => {
       const params = new URLSearchParams();
       params.append('grant_type', 'authorization_code');
-      params.append('code', code);
-      params.append('redirect_uri', 'http://localhost:3000/callback');
+      params.append('code', RESPONSE_TYPE);
+      params.append('redirect_uri', REDIRECT_URI);
       params.append('client_id', 'cd94803c352d41ebb5ccb110b98f6e89');
       params.append('client_secret', '94215f3d9a3243bfab35029d306ea369');
 
